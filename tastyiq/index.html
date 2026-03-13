@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tastyr iQ — Find the Best Dishes Near You</title>
+    <meta name="description" content="Tastyr iQ uses AI to rank dishes at restaurants based on flavor profiles, reviews, and your taste preferences. Discover your next favorite meal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #FA2A52;
+            --brand-dark: #E0234A;
+            --brand-light: #FFF0F3;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555570;
+            --text-muted: #8888A0;
+            --bg: #FFFFFF;
+            --bg-alt: #F8F8FC;
+            --border: #E8E8F0;
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--brand);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--brand-light) 0%, var(--bg) 100%);
+        }
+
+        .hero-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--brand);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--brand);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--brand);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(250, 42, 82, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text-primary);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+        }
+
+        /* Dishes Section */
+        .dishes {
+            padding: 80px 24px;
+            background: var(--bg);
+        }
+
+        .section-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--brand);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 48px;
+        }
+
+        .dish-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .dish-tag {
+            background: var(--bg-alt);
+            border: 1.5px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .dish-tag:hover {
+            border-color: var(--brand);
+            background: var(--brand-light);
+            color: var(--brand);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 24px;
+            background: var(--bg-alt);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--brand-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 24px;
+            background: var(--bg);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--brand);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--brand) 0%, #FF6B81 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--brand);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand);
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .nav-inner {
+                height: 56px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 120px 20px 64px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .dishes, .features, .how-it-works {
+                padding: 56px 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/tastyiq/" class="nav-logo">Tastyr <span>iQ</span></a>
+            <ul class="nav-links">
+                <li><a href="/tastyiq/support/">Support</a></li>
+                <li><a href="/tastyiq/privacy/">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">AI-Powered Food Discovery</div>
+            <h1>Find the best <span>dishes</span>, not just restaurants.</h1>
+            <p>Tastyr iQ ranks individual dishes at restaurants near you using AI analysis of flavor profiles, reviews, and your personal taste preferences.</p>
+            <div class="cta-group">
+                <a href="#" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.89C10.1 6.87 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+                    Download on the App Store
+                </a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dishes">
+        <div class="section-inner">
+            <div class="section-label">Currently Supported</div>
+            <h2 class="section-title">Dishes We Rank</h2>
+            <p class="section-subtitle">We go deep on each cuisine, analyzing what makes a great version of every dish.</p>
+            <div class="dish-grid">
+                <div class="dish-tag">Biryani</div>
+                <div class="dish-tag">Dosa</div>
+                <div class="dish-tag">Ramen</div>
+                <div class="dish-tag">Tacos</div>
+                <div class="dish-tag">Sushi</div>
+                <div class="dish-tag">Pad Thai</div>
+                <div class="dish-tag">Neapolitan Pizza</div>
+                <div class="dish-tag">Ethiopian Food</div>
+                <div class="dish-tag">Burmese Food</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-inner">
+            <div class="section-label">Why Tastyr iQ</div>
+            <h2 class="section-title">Smarter Food Decisions</h2>
+            <p class="section-subtitle">Stop scrolling through star ratings. Get dish-level intelligence powered by AI.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#127869;</div>
+                    <h3>Dish-Level Rankings</h3>
+                    <p>We don't just rate restaurants. We rank specific dishes so you always order the best thing on the menu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#129504;</div>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Our AI processes thousands of reviews, photos, and flavor signals to surface what's genuinely excellent.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#127919;</div>
+                    <h3>Personalized to You</h3>
+                    <p>Tell us your taste preferences and we'll tailor rankings to what you'll actually love, not just what's popular.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128205;</div>
+                    <h3>Nearby Discovery</h3>
+                    <p>Find top-ranked dishes at restaurants close to you. Great food might be closer than you think.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Flavor Profiles</h3>
+                    <p>See detailed breakdowns of what makes each dish special: spice levels, texture, authenticity, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#10024;</div>
+                    <h3>Always Improving</h3>
+                    <p>We're constantly adding new dishes and refining our rankings as we gather more data and feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="section-inner">
+            <div class="section-label">Getting Started</div>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps to better food decisions.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Set Your Preferences</h3>
+                    <p>Tell us what you love. Spicy? Creamy? Crunchy? We build a taste profile that's uniquely yours.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Pick a Dish</h3>
+                    <p>Choose from our supported cuisines. We'll show you the highest-ranked spots near your location.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Eat Something Great</h3>
+                    <p>Head to a top-ranked spot with confidence. No more guessing, no more disappointing meals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to eat better?</h2>
+        <p>Download Tastyr iQ and discover the best dishes near you, ranked by AI and tailored to your taste.</p>
+        <a href="#" class="btn btn-white">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.89C10.1 6.87 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+            Get the App
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 Earth Collective</div>
+            <ul class="footer-links">
+                <li><a href="/tastyiq/support/">Support</a></li>
+                <li><a href="/tastyiq/privacy/">Privacy Policy</a></li>
+                <li><a href="mailto:hello@percentearth.co">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
