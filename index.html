@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>% Earth Collective — Regenerating Sustainable Ecosystems</title>
+    <meta name="description" content="% Earth Collective operates in harmony with nature — regenerating ecosystems, empowering farming communities, and building technology that connects people with food, nature, and the land.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --bg: #1A1A1A;
+            --bg-alt: #222222;
+            --bg-card: #2A2A2A;
+            --border: rgba(255, 255, 255, 0.1);
+            --earth-green: #4F8F2F;
+            --earth-green-light: rgba(79, 143, 47, 0.15);
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-primary); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26, 26, 26, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 20px; font-weight: 800; text-decoration: none; color: var(--text-primary); }
+        .nav-logo span { opacity: 0.5; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 15px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* Hero */
+        .hero { padding: 160px 24px 80px; text-align: center; background: linear-gradient(180deg, #1F2A19 0%, var(--bg) 100%); }
+        .hero-inner { max-width: 760px; margin: 0 auto; }
+        .hero h1 { font-size: clamp(40px, 6vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.03em; }
+        .hero h1 .percent { color: var(--earth-green); }
+        .hero .subtitle { font-size: 22px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 20px; line-height: 1.6; font-weight: 500; }
+        .hero .tagline { font-size: 15px; color: var(--earth-green); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+        .hero .description { font-size: 16px; color: var(--text-muted); max-width: 580px; margin: 0 auto; line-height: 1.8; }
+
+        /* Mission Section */
+        .mission { padding: 80px 24px; background: var(--bg-alt); }
+        .mission-inner { max-width: 800px; margin: 0 auto; }
+        .mission-quote { font-size: 24px; font-weight: 700; line-height: 1.5; text-align: center; margin-bottom: 32px; letter-spacing: -0.01em; }
+        .mission-quote .highlight { color: var(--earth-green); }
+        .mission-text { font-size: 16px; color: var(--text-secondary); line-height: 1.9; text-align: center; margin-bottom: 24px; }
+
+        /* Pillars */
+        .pillars { padding: 80px 24px; background: var(--bg); }
+        .pillars-inner { max-width: 1080px; margin: 0 auto; }
+        .section-label { text-align: center; font-size: 13px; font-weight: 600; color: var(--earth-green); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+        .section-title { text-align: center; font-size: clamp(28px, 4vw, 36px); font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .section-subtitle { text-align: center; font-size: 16px; color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; }
+
+        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .pillar-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+        .pillar-icon { font-size: 28px; margin-bottom: 16px; }
+        .pillar-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .pillar-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+        /* Apps Section */
+        .apps { padding: 80px 24px; background: var(--bg-alt); }
+        .apps-inner { max-width: 1080px; margin: 0 auto; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .app-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+        .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+        .app-card-accent { width: 48px; height: 4px; border-radius: 2px; margin-bottom: 24px; }
+        .app-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .app-card .app-tagline { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+        .app-card .app-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
+        .app-card .app-link { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 15px; font-weight: 600; transition: gap 0.2s; }
+        .app-card .app-link:hover { gap: 10px; }
+        .app-card-tastyiq .app-link { color: #FA2A52; }
+        .app-card-leafpeople .app-link { color: #2ECC70; }
+        .app-card-thengu .app-link { color: #4F8F2F; }
+
+        /* Community Section */
+        .community { padding: 80px 24px; background: var(--bg); }
+        .community-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .community h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+        .community p { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+        .community .cta-email { display: inline-block; margin-top: 24px; padding: 14px 32px; background: var(--earth-green); color: white; text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 8px; transition: opacity 0.2s; }
+        .community .cta-email:hover { opacity: 0.9; }
+
+        /* Footer */
+        footer { padding: 48px 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+        .footer-brand { max-width: 340px; }
+        .footer-brand h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+        .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .footer-nav { display: flex; gap: 48px; }
+        .footer-nav-group h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+        .footer-nav-group ul { list-style: none; }
+        .footer-nav-group li { margin-bottom: 8px; }
+        .footer-nav-group a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-nav-group a:hover { color: var(--text-primary); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .footer-copy { font-size: 14px; color: var(--text-muted); }
+        .footer-contact a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-contact a:hover { color: var(--text-primary); }
+
+        @media (max-width: 640px) {
+            .nav-inner { height: 56px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 14px; }
+            .hero { padding: 120px 20px 64px; }
+            .hero .subtitle { font-size: 18px; }
+            .mission, .pillars, .apps, .community { padding: 56px 20px; }
+            .app-grid { grid-template-columns: 1fr; }
+            .pillar-grid { grid-template-columns: 1fr 1fr; }
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-nav { flex-direction: column; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/percentearth-site/" class="nav-logo">% Earth <span>Collective</span></a>
+            <ul class="nav-links">
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#connect">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="tagline">Earth is our only shareholder</p>
+            <img src="/percentearth-site/White2C.png" alt="% Earth Collective" style="width: 200px; height: auto; margin: 0 auto 24px; display: block;">
+            <p class="subtitle">Regenerating sustainable, local, minimalist, organic, and natural ecosystems.</p>
+            <p class="description">We operate in harmony with nature, embracing the belief that less can be both sufficient and fulfilling. Every percentage point of improvement — in soil health, water conservation, or carbon reduction — moves us closer to a sustainable future.</p>
+        </div>
+    </section>
+
+    <section class="mission" id="mission">
+        <div class="mission-inner">
+            <p class="mission-quote">"Our goal is simple: to <span class="highlight">regenerate depleted parts of the Earth</span>, one farm, one space, or one ecosystem at a time."</p>
+            <p class="mission-text">% Earth Collective is not just a single-family farming business — it's a community collective where our methodologies and techniques are shared across farms within our network. Rooted in a deep respect for the planet and a commitment to regenerative and restorative farming, we seek to educate and revolutionize the way we grow and consume food.</p>
+            <p class="mission-text">Our mission is to restore ecosystems, empower communities, and provide nourishment that benefits both people and the planet. Through sustainable practices that enhance biodiversity, restore soil health, and sequester carbon, we aim to produce high-quality, nutrient-rich food. % Earth is about more than farming — it's about healing the planet.</p>
+        </div>
+    </section>
+
+    <section class="pillars">
+        <div class="pillars-inner">
+            <div class="section-label">The % Earth Difference</div>
+            <h2 class="section-title">How We Work</h2>
+            <p class="section-subtitle">We go beyond organic by implementing practices that not only avoid harm but actively heal the land.</p>
+
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🌱</div>
+                    <h3>Regenerative Agriculture</h3>
+                    <p>Rebuilding organic soil quality for microorganisms to thrive. Crop rotation, cover cropping, and holistic grazing that actively heals the land.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🔍</div>
+                    <h3>Transparency</h3>
+                    <p>From farm to table, complete transparency in our operations. Trace your food back to the source and see the positive impact your purchase makes.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🤝</div>
+                    <h3>Community Empowerment</h3>
+                    <p>Working hand-in-hand with local communities, providing fair wages, educational programs, and opportunities for collaboration.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🌍</div>
+                    <h3>Sustainability at Scale</h3>
+                    <p>Creating a blueprint for sustainable farming that can be replicated globally. Scaling regenerative practices one farm at a time.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">📱</div>
+                    <h3>Product Development</h3>
+                    <p>Building technology that connects people with food, nature, and farming — apps for dish discovery, plant care, and farm management.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🏡</div>
+                    <h3>Farm Stays & Education</h3>
+                    <p>Workshops, farm tours, eco homesteads, and educational programs to spread the knowledge of regenerative practices and sustainable living.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="apps" id="apps">
+        <div class="apps-inner">
+            <div class="section-label">Product Development</div>
+            <h2 class="section-title">Our Apps</h2>
+            <p class="section-subtitle">Technology that connects people with food, nature, and the land they cultivate.</p>
+
+            <div class="app-grid">
+                <div class="app-card app-card-tastyiq">
+                    <div class="app-card-accent" style="background: #FA2A52;"></div>
+                    <h3>Tastyr iQ</h3>
+                    <p class="app-tagline">AI-powered dish ranking &amp; discovery</p>
+                    <p class="app-desc">Ranks individual dishes at restaurants near you using AI analysis of flavor profiles, reviews, and your personal taste preferences. Over 40 million people search for ethnic food every month — we help them find the best version of the dish they're craving.</p>
+                    <a href="/percentearth-site/tastyiq/" class="app-link">Learn More &rarr;</a>
+                </div>
+
+                <div class="app-card app-card-leafpeople">
+                    <div class="app-card-accent" style="background: #2ECC70;"></div>
+                    <h3>Leaf People</h3>
+                    <p class="app-tagline">Your rare plant companion</p>
+                    <p class="app-desc">Track, care for, and trade rare plants with a community of collectors. Built on the Foliology book, Leaf People helps enthusiasts manage their collections with effortless care schedules and a peer-to-peer marketplace.</p>
+                    <a href="/percentearth-site/leafpeople/" class="app-link">Learn More &rarr;</a>
+                </div>
+
+                <div class="app-card app-card-thengu">
+                    <div class="app-card-accent" style="background: #4F8F2F;"></div>
+                    <h3>Thengu</h3>
+                    <p class="app-tagline">The simplest coconut farm manager</p>
+                    <p class="app-desc">Track harvests, manage expenses, sell coconuts, and grow your farm — in your language. Built by a coconut farmer for coconut farmers, with AI-powered coconut counting and support for English, Kannada, Tamil, Telugu, and Malayalam.</p>
+                    <a href="/percentearth-site/thengu/" class="app-link">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community" id="connect">
+        <div class="community-inner">
+            <h2>Join the Collective</h2>
+            <p>Whether you're a farmer looking for sustainable techniques, a food lover discovering new dishes, or a plant enthusiast growing your collection — there's a place for you in % Earth Collective.</p>
+            <p>We believe that every percentage point of improvement moves us closer to a sustainable future. Hence the name — % Earth.</p>
+            <a href="mailto:hello@percentearth.co" class="cta-email">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>% Earth Collective</h3>
+                    <p>Regenerating sustainable, local, minimalist, organic, and natural ecosystems. Earth is our only shareholder.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-group">
+                        <h4>Tastyr iQ</h4>
+                        <ul>
+                            <li><a href="/percentearth-site/tastyiq/">Home</a></li>
+                            <li><a href="/percentearth-site/tastyiq/support/">Support</a></li>
+                            <li><a href="/percentearth-site/tastyiq/privacy/">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-group">
+                        <h4>Leaf People</h4>
+                        <ul>
+                            <li><a href="/percentearth-site/leafpeople/">Home</a></li>
+                            <li><a href="/percentearth-site/leafpeople/support/">Support</a></li>
+                            <li><a href="/percentearth-site/leafpeople/privacy/">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-group">
+                        <h4>Thengu</h4>
+                        <ul>
+                            <li><a href="/percentearth-site/thengu/">Home</a></li>
+                            <li><a href="/percentearth-site/thengu/support/">Support</a></li>
+                            <li><a href="/percentearth-site/thengu/privacy/">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">&copy; 2026 Percent Earth Collective LLP. All rights reserved.</div>
+                <div class="footer-contact"><a href="mailto:hello@percentearth.co">hello@percentearth.co</a></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

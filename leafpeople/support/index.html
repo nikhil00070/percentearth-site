@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Leaf People</title>
+    <meta name="description" content="Get help with Leaf People. Contact our support team, browse frequently asked questions, and learn how to get the most out of the app.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #2ECC70;
+            --brand-dark: #27AE60;
+            --brand-light: #EAFAF1;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555570;
+            --text-muted: #8888A0;
+            --bg: #FFFFFF;
+            --bg-alt: #F8F8FC;
+            --border: #E8E8F0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--brand);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brand);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 140px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--brand-light) 0%, var(--bg) 100%);
+        }
+
+        .page-header h1 {
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Content */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: var(--bg-alt);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px;
+            margin: 48px 0;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .contact-email:hover {
+            background: var(--brand-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(46, 204, 112, 0.3);
+        }
+
+        .response-note {
+            display: block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-top: 56px;
+        }
+
+        .faq-section h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-question {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-answer a {
+            color: var(--brand);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Additional Help */
+        .additional-help {
+            background: var(--brand-light);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+
+        .additional-help h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .additional-help p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .additional-help a {
+            color: var(--brand);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .additional-help a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand);
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .nav-inner {
+                height: 56px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .page-header {
+                padding: 120px 20px 48px;
+            }
+
+            .content {
+                padding: 0 20px 56px;
+            }
+
+            .contact-card {
+                padding: 28px 20px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/percentearth-site/leafpeople/" class="nav-logo">Leaf <span>People</span></a>
+            <ul class="nav-links">
+                <li><a href="/percentearth-site/leafpeople/support/" class="active">Support</a></li>
+                <li><a href="/percentearth-site/leafpeople/privacy/">Privacy</a></li>
+                <li><a href="/percentearth-site/">% Earth Collective</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Support</h1>
+        <p>We're here to help you get the most out of Leaf People. Find answers below or reach out directly.</p>
+    </div>
+
+    <div class="content">
+
+        <div class="contact-card">
+            <h2>Contact Us</h2>
+            <p>Have a question, found a bug, or want to suggest a feature? We'd love to hear from you. Our team reads every message and will get back to you as soon as possible.</p>
+            <a href="mailto:hello@percentearth.co" class="contact-email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+                hello@percentearth.co
+            </a>
+            <span class="response-note">We typically respond within 24 hours on business days.</span>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I add plants to my collection?</div>
+                <div class="faq-answer">Open the app and tap the "+" button on the Collection tab. You can search our plant library by common or scientific name, browse by category, or manually add a custom entry. Once you select a plant, you can add notes, photos, and set up a care schedule.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do care reminders work?</div>
+                <div class="faq-answer">When you add a plant, Leaf People suggests a care schedule based on the species and your region. You can customize watering, fertilizing, and light-check reminders. Notifications are sent to your device at the times you choose. You can adjust or disable reminders at any time from the plant's detail page.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How does the marketplace work?</div>
+                <div class="faq-answer">The marketplace lets you buy, sell, and trade rare plants with other verified collectors. To list a plant, go to the Marketplace tab and tap "Create Listing." Add photos, a description, and set your price. Payments are processed securely through Stripe. You can also browse listings from other collectors filtered by region, species, or price.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What premium features are available?</div>
+                <div class="faq-answer">Leaf People offers a free tier with full access to the plant library and basic care tracking. Premium features include advanced care analytics, unlimited marketplace listings, priority support, and detailed regional growing guides. You can upgrade from the Profile tab within the app.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I delete my account?</div>
+                <div class="faq-answer">You can delete your account from the Profile tab by tapping "Delete Account." This will permanently remove your account, plant collection data, marketplace listings, and all associated data from our systems. If you have trouble, email us at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a> and we'll take care of it.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why does the app need my location?</div>
+                <div class="faq-answer">We use your location to determine your climate zone so we can provide accurate regional growing advice for your plants. It also helps connect you with nearby collectors on the marketplace. We only access location while you're using the app and never track you in the background. You can set your region manually if you prefer not to share your location.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I report a problem with a marketplace listing?</div>
+                <div class="faq-answer">If you encounter an issue with a listing or another user, tap the three-dot menu on the listing and select "Report." You can describe the problem and our team will investigate. You can also reach out directly at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a>.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is my payment information safe?</div>
+                <div class="faq-answer">Yes. All marketplace payments are processed by Stripe, a PCI-compliant payment processor. We never store your full credit card details on our servers. Stripe handles all sensitive payment data securely.</div>
+            </div>
+        </div>
+
+        <div class="additional-help">
+            <h3>Still need help?</h3>
+            <p>If you didn't find what you were looking for, don't hesitate to reach out. Email us at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a> and we'll do our best to help.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 Earth Collective</div>
+            <ul class="footer-links">
+                <li><a href="/percentearth-site/leafpeople/">Home</a></li>
+                <li><a href="/percentearth-site/leafpeople/support/">Support</a></li>
+                <li><a href="/percentearth-site/leafpeople/privacy/">Privacy Policy</a></li>
+                <li><a href="/percentearth-site/">% Earth Collective</a></li>
+                <li><a href="mailto:hello@percentearth.co">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Thengu</title>
+    <meta name="description" content="Privacy Policy for Thengu by Earth Collective. Learn how we collect, use, and protect your data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #4F8F2F;
+            --brand-dark: #3D7024;
+            --brand-light: #EDF5E8;
+            --accent: #D97835;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555570;
+            --text-muted: #8888A0;
+            --bg: #FFFFFF;
+            --bg-alt: #F8F8FC;
+            --border: #E8E8F0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--brand);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brand);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 140px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--brand-light) 0%, var(--bg) 100%);
+        }
+
+        .page-header h1 {
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* Content */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .content li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 6px;
+        }
+
+        .content a {
+            color: var(--brand);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .toc {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .toc ol {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .toc li {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .toc a {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: var(--brand);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand);
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .nav-inner {
+                height: 56px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .page-header {
+                padding: 120px 20px 48px;
+            }
+
+            .content {
+                padding: 32px 20px 56px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/percentearth-site/thengu/" class="nav-logo"><span>Thengu</span></a>
+            <ul class="nav-links">
+                <li><a href="/percentearth-site/thengu/support/">Support</a></li>
+                <li><a href="/percentearth-site/thengu/privacy/" class="active">Privacy</a></li>
+                <li><a href="/percentearth-site/">% Earth Collective</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>Last updated and effective: March 16, 2026</p>
+    </div>
+
+    <div class="content">
+
+        <div class="effective-date">Effective Date: March 16, 2026</div>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#information-we-collect">Information We Collect</a></li>
+                <li><a href="#how-we-use">How We Use Your Information</a></li>
+                <li><a href="#data-storage">Data Storage and Security</a></li>
+                <li><a href="#third-party">Third-Party Services</a></li>
+                <li><a href="#location">Location Data</a></li>
+                <li><a href="#data-sharing">Data Sharing</a></li>
+                <li><a href="#data-retention">Data Retention</a></li>
+                <li><a href="#your-rights">Your Rights and Choices</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ol>
+        </div>
+
+        <h2 id="introduction">1. Introduction</h2>
+        <p>Earth Collective (Percent Earth Collective LLP) ("we," "our," or "us") operates the Thengu mobile application ("the App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App. We are committed to protecting your privacy and being transparent about our data practices.</p>
+        <p>By using Thengu, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this Privacy Policy, please do not use the App.</p>
+
+        <h2 id="information-we-collect">2. Information We Collect</h2>
+
+        <h3>Account Information</h3>
+        <p>When you create an account, we collect:</p>
+        <ul>
+            <li><strong>Name and phone number</strong> — provided during registration via phone OTP verification.</li>
+            <li><strong>Email address</strong> — if provided during registration or through a third-party sign-in method.</li>
+            <li><strong>Apple ID information</strong> — if you choose to sign in with Apple, we receive the information you authorize Apple to share, which may include your name and email address (or a private relay email address if you choose to hide your email).</li>
+            <li><strong>Google account information</strong> — if you choose to sign in with Google, we receive your name and email address as authorized by your Google account settings.</li>
+        </ul>
+
+        <h3>Farm Data</h3>
+        <p>We collect information about your coconut farm operations, including harvest records, expense entries, sales transactions, buyer details, fertilizer schedules, and tree counts. This information is provided voluntarily and is used to power your farm management experience.</p>
+
+        <h3>Project Membership</h3>
+        <p>When you create or join a farm project, we store your project membership, role, and 4-digit share code. This allows team members to collaborate on the same farm data.</p>
+
+        <h3>Location Data</h3>
+        <p>With your permission, we may collect your approximate location to assist with regional features. Location access is optional and the App functions fully without it. See <a href="#location">Section 6</a> for more details.</p>
+
+        <h3>Device Information</h3>
+        <p>We automatically collect certain device information, including:</p>
+        <ul>
+            <li>Device type and operating system version</li>
+            <li>App version</li>
+            <li>App performance data and crash reports</li>
+            <li>General usage statistics</li>
+        </ul>
+
+        <h2 id="how-we-use">3. How We Use Your Information</h2>
+        <p>We use the information we collect for the following purposes:</p>
+        <ul>
+            <li><strong>Providing the Service</strong> — to create and manage your account, store your farm data (harvests, expenses, sales), facilitate team collaboration through project sharing, and generate reports.</li>
+            <li><strong>AI Coconut Counting</strong> — to process photos you take using the on-device Apple Vision framework. Photos are analyzed entirely on your device and are never sent to our servers or any third party.</li>
+            <li><strong>Reports</strong> — to generate PDF summaries of your harvests, expenses, and sales in your selected language.</li>
+            <li><strong>Improving the App</strong> — to understand how users interact with the App, identify issues, and develop new features.</li>
+            <li><strong>Communication</strong> — to respond to your support requests and send important service-related notices.</li>
+        </ul>
+
+        <h2 id="data-storage">4. Data Storage and Security</h2>
+        <p>Your data is stored using Firebase Firestore, a secure cloud database provided by Google. We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+        <ul>
+            <li>Encryption of data in transit using TLS/SSL</li>
+            <li>Encryption of data at rest</li>
+            <li>Firestore security rules to control data access per project</li>
+            <li>Secure authentication through Firebase Auth</li>
+        </ul>
+        <p>While we strive to protect your information, no method of electronic storage or transmission over the Internet is 100% secure. We cannot guarantee absolute security of your data.</p>
+
+        <h2 id="third-party">5. Third-Party Services</h2>
+        <p>Thengu uses the following third-party services:</p>
+
+        <h3>Firebase Auth</h3>
+        <p>Provided by Google LLC. Used for user authentication via phone OTP, Apple Sign-In, and Google Sign-In. Firebase Auth processes your authentication credentials securely. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy Policy</a>.</p>
+
+        <h3>Firebase Firestore</h3>
+        <p>Provided by Google LLC. Used as our cloud database to store and sync your farm data (harvests, expenses, sales, project memberships) across devices and team members. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy Policy</a>.</p>
+
+        <h3>Apple Vision Framework</h3>
+        <p>Provided by Apple Inc. Used for on-device coconut counting from photos. All image processing happens entirely on your device. No photos or image data are sent to our servers, Apple's servers, or any third party through this feature.</p>
+
+        <h2 id="location">6. Location Data</h2>
+        <p>Thengu may request access to your device's location for optional regional features. Key points about our location data practices:</p>
+        <ul>
+            <li>Location access is <strong>entirely optional</strong>. The App functions fully without location permissions.</li>
+            <li>We do not access your location in the background or when the App is closed.</li>
+            <li>You can deny or revoke location permissions at any time through your device's Settings.</li>
+        </ul>
+
+        <h2 id="data-sharing">7. Data Sharing</h2>
+        <p>We value your privacy and are committed to the following principles:</p>
+        <ul>
+            <li><strong>We do NOT sell your personal data</strong> to any third party, under any circumstances.</li>
+            <li><strong>We do NOT use third-party advertising</strong> in the App. Your data is never shared with advertising networks or data brokers.</li>
+            <li><strong>We do NOT share your personal information with third parties for their marketing purposes.</strong></li>
+        </ul>
+        <p>Your farm data (harvests, expenses, sales) is shared only with other members of your farm project who have joined using your 4-digit share code. This is necessary to enable team collaboration.</p>
+        <p>We may also share information in the following limited circumstances:</p>
+        <ul>
+            <li><strong>Service Providers</strong> — with the third-party services described in Section 5, solely to provide and improve the App's functionality.</li>
+            <li><strong>Legal Requirements</strong> — if required by law, regulation, legal process, or governmental request.</li>
+            <li><strong>Protection of Rights</strong> — to protect the rights, property, or safety of Earth Collective, our users, or the public as required or permitted by law.</li>
+            <li><strong>Business Transfers</strong> — in connection with a merger, acquisition, or sale of assets, in which case you would be notified of any change in data handling practices.</li>
+        </ul>
+
+        <h2 id="data-retention">8. Data Retention</h2>
+        <p>We retain your personal data for as long as your account is active or as needed to provide you with our services. If you request account deletion, we will delete your personal data from our active systems within 30 days. Some data may be retained in encrypted backups for up to 90 days after deletion before being permanently removed.</p>
+        <p>Anonymized and aggregated data that cannot be used to identify you may be retained indefinitely for analytics and service improvement purposes.</p>
+
+        <h2 id="your-rights">9. Your Rights and Choices</h2>
+        <p>You have the following rights regarding your personal data:</p>
+        <ul>
+            <li><strong>Access</strong> — you can view your account information and farm data within the App at any time.</li>
+            <li><strong>Correction</strong> — you can update your account information and farm details through the App's settings.</li>
+            <li><strong>Export</strong> — you can export a full backup of your farm data from the App's Settings.</li>
+            <li><strong>Deletion</strong> — you can request deletion of your account and all associated data by contacting us at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a>.</li>
+            <li><strong>Location</strong> — you can enable or disable location access at any time through your device settings.</li>
+        </ul>
+        <p>If you are a resident of the European Economic Area (EEA), United Kingdom, or California, you may have additional rights under applicable data protection laws, including the right to data portability and the right to lodge a complaint with a supervisory authority. To exercise any of these rights, please contact us at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a>.</p>
+
+        <h2 id="children">10. Children's Privacy</h2>
+        <p>Thengu is not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13. If we become aware that we have collected personal data from a child under 13 without parental consent, we will take steps to delete that information promptly. If you believe your child has provided us with personal information, please contact us at <a href="mailto:hello@percentearth.co">hello@percentearth.co</a>.</p>
+
+        <h2 id="changes">11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. When we make changes, we will update the "Effective Date" at the top of this page and, for significant changes, provide a notice within the App. We encourage you to review this Privacy Policy periodically to stay informed about how we protect your data.</p>
+        <p>Your continued use of the App after any changes to this Privacy Policy constitutes your acceptance of the updated policy.</p>
+
+        <h2 id="contact">12. Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+        <ul>
+            <li><strong>Company:</strong> Earth Collective (Percent Earth Collective LLP)</li>
+            <li><strong>Email:</strong> <a href="mailto:hello@percentearth.co">hello@percentearth.co</a></li>
+        </ul>
+        <p>We will respond to privacy-related inquiries within 30 days.</p>
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; 2026 Earth Collective</div>
+            <ul class="footer-links">
+                <li><a href="/percentearth-site/thengu/">Home</a></li>
+                <li><a href="/percentearth-site/thengu/support/">Support</a></li>
+                <li><a href="/percentearth-site/thengu/privacy/">Privacy Policy</a></li>
+                <li><a href="/percentearth-site/">% Earth Collective</a></li>
+                <li><a href="mailto:hello@percentearth.co">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
